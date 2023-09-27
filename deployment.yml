@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: CICDTEST
+spec:
+  selector:
+    matchLabels:
+      app: CICDTEST
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: CICDTEST
+    spec:
+      containers:
+        - name: core
+          image: jakeheon/CICDTEST
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1000Mi
